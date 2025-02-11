@@ -1,0 +1,10 @@
+.header{
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_link:hover{
+    text-decoration: underline;
+}

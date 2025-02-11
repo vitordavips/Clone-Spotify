@@ -1,0 +1,10 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.main_link{
+    text-decoration: underline;
+}
