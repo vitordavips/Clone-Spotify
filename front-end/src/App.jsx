@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './components/Header/Header'
 
-//components
+//components  
+import Header from './components/Header/Header'
+import Main from './components/Main/Main'
 
 const App = () => {
-  return <Header/>
+  return<>
+     <Header/>
+     <Main/>
+  </>
 }
 
 export default App
