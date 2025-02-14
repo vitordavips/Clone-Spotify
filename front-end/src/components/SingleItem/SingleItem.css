@@ -40,27 +40,30 @@
     border-radius: 50%;
   }
   
-  .single-item__icon {
+  
+  .single-item__div-image-buttom {
+    position: relative; /* Necessário para o ícone ficar dentro da área do contêiner */
+}
+
+.single-item__icon {
     position: absolute;
     font-size: 50px;
     right: 7.5px;
     bottom: 7.5px;
     color: var(--green-400);
-    opacity: 0;
-    transform: translateY(100%);
+    opacity: 0;  /* Começa invisível */
+    transform: translateY(100%);  /* Começa fora da tela */
     transition-timing-function: var(--transition-function);
     transition-duration: var(--transition-duration);
     transition-property: opacity, transform;
-  }
-  
-  .single-item__icon--artist {
-    position: fixed;
-    opacity: 1;
-    transform: translateY(0);
-    right: 25px;
-    bottom: 25px;
-  }
-  
+}
+
+.single-item__div-image-buttom:hover .single-item__icon {
+    opacity: 1;  /* Torna o ícone visível ao passar o mouse */
+    transform: translateY(0);  /* Move o ícone para sua posição normal */
+}
+
+
   .single-item__title {
     font-weight: 600;
   }

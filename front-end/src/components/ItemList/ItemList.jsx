@@ -1,9 +1,11 @@
 import React from 'react'
 import './ItemList.css'
+import SingleItem from '../SingleItem/SingleItem';
 import { Link } from 'react-router-dom';
 
-const ItemList = ({title, items, itemsArray, path, idPath}) => {
-  return (
+const ItemList = ({title, items, itemArray, path, idPath}) => {
+    console.log("Renderizando:", title, "Dados:", itemArray); 
+    return (
     <div className='item-list'>
         <div className='item-list__header'>
             <h2>{title} populares</h2>
@@ -13,7 +15,7 @@ const ItemList = ({title, items, itemsArray, path, idPath}) => {
         </div>
 
         <div className='item-list__container'>
-            {itemsArray
+            {(itemArray || [])
                 .filter((currentValue, index) => index < items)
                 .map((currObj, index) => (
                     <SingleItem
@@ -28,7 +30,7 @@ const ItemList = ({title, items, itemsArray, path, idPath}) => {
                 ))}
         </div>
     </div>
-
+    
   )
 }
 
