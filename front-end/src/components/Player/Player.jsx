@@ -5,11 +5,17 @@ import {
   faBackwardStep,
   faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-
-const Player = () => {
+const Player = ({durtion, randomIdFromArtist, randomId2FromArtists }) => {
   return (
-    <div>Player</div>
+    <div className='player'>
+        <div className='player__controllers'>
+            <Link to={`/song/${randomIdFromArtist}`}>
+                <FontAwesomeIcon className='player__icon'/>
+            </Link>
+        </div>
+    </div>
   )
 }
 
