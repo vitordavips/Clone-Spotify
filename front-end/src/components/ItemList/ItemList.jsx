@@ -1,37 +1,48 @@
 import React from 'react'
 import './ItemList.css'
 import SingleItem from '../SingleItem/SingleItem';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const ItemList = ({title, items, itemArray, path, idPath}) => {
-    console.log("Renderizando:", title, "Dados:", itemArray); 
+const ItemList = ({ title, items, itemsArray, path, idPath }) => {
+    // console.log(items);
+    // console.log(useLocation());
+    const { pathname } = useLocation();
+    // console.log(pathname);
+    const isHome = pathname === "/";
+    const finalItems = isHome ? items : Infinity;
+  
     return (
-    <div className='item-list'>
-        <div className='item-list__header'>
-            <h2>{title} populares</h2>
-            <Link to={path} className='item-list__link'>
-                Mostrar Tudo
+      <div className="item-list">
+        <div className="item-list__header">
+          <h2>{title} populares</h2>
+  
+          {isHome ? (
+            <Link to={path} className="item-list__link">
+              Mostrar tudo
             </Link>
+          ) : (
+            <></>
+          )}
         </div>
-
-        <div className='item-list__container'>
-            {(itemArray || [])
-                .filter((currentValue, index) => index < items)
-                .map((currObj, index) => (
-                    <SingleItem
-                        // id={currObj.id}
-                        // name={currObj.name}
-                        // image={currObj.image}
-                        // banner={currObj.banner}
-                        idPath={idPath}
-                        {...currObj}
-                        key={`${title}-${index}`}
-                    />
-                ))}
+  
+        <div className="item-list__container">
+          {itemsArray
+            .filter((currentValue, index) => index < finalItems)
+            .map((currObj, index) => (
+              <SingleItem
+                // id={currObj.id}
+                // name={currObj.name}
+                // image={currObj.image}
+                // banner={currObj.banner}
+                {...currObj}
+                idPath={idPath}
+                key={`${title}-${index}`}
+              />
+            ))}
         </div>
-    </div>
-    
-  )
-}
-
-export default ItemList
+      </div>
+    );
+  };
+  
+  export default ItemList;
+  
