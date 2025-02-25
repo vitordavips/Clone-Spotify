@@ -1,14 +1,22 @@
 import {MongoClient} from "mongodb";
 
-const URI = "mongodb+srv://vitordavidps:tiR9UYuHH5EK2w0u@cluster0.9ynp9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const URI = "mongodb+srv://vitordavidps:nIJG80CAhny9EYXv@cluster0.fbeeg.mongodb.net/clone-spotify?retryWrites=true&w=majority&appName=Cluster0"
 
-const client = new MongoClient(URI)
+const client = new MongoClient(URI);
 
-try {
-    await client.connect();
-    console.log("Conectado ao MongoDB!")
-} catch (error) {
-    console.log("Erro: ", error)
+async function connectDB() {
+    try {
+        console.log("Tentando conectar ao mongodb...")
+        await client.connect(); // Conectar ao banco
+
+        const db = client.db("Clone-Spotify");
+        console.log("Banco de dados conectado com sucesso!");
+        console.log(db.namespace); // Exibe o nome do banco
+
+        return db;
+    } catch (error) {
+        console.error("Erro ao conectar ao banco:", error);
+    } 
 }
 
-export const db = client.db("Spotify")
+connectDB();
